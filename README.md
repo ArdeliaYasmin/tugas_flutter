@@ -1,4 +1,4 @@
-# splash2
+# splash
 
 A new Flutter project.
 

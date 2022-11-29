@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:splash2/splash/splash_screen.dart';
+import 'package:splash/splash/splash_screen.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
