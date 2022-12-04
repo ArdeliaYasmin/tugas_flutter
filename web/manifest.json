@@ -1,6 +1,6 @@
 {
-    "name": "splash2",
-    "short_name": "splash2",
+    "name": "splash",
+    "short_name": "splash",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
