@@ -1,20 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:splash/splash/welcome_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-int onboarding = 0;
-
-Future initOnboarding() async {
-  final prefs = await SharedPreferences.getInstance();
-
-  int? onboard = prefs.getInt('onboarding');
-  print('onboard : $onboard');
-  if (onboard != null && onboard == 1) {
-    return onboarding = 1;
-  }
-  prefs.setInt(('onboarding'), 1);
-}
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -43,20 +29,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
       pages: [
         PageViewModel(
             title: "1",
-            body:
-                "Contoh",
+            body: "Contoh",
             image: Image.asset("assets/onboarding1.png"),
             decoration: pageDecoration),
         PageViewModel(
             title: "2",
-            body:
-                "contoh",
+            body: "contoh",
             image: Image.asset("assets/onboarding2.png"),
             decoration: pageDecoration),
         PageViewModel(
           title: "3",
-          body:
-              "contoh",
+          body: "contoh",
           image: Image.asset("assets/onboarding3.png"),
           decoration: pageDecoration,
           footer: ElevatedButton(

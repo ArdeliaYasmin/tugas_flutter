@@ -1,5 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:splash/splash/onboarding_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+int onboarding = 0;
+
+Future initOnboarding() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  int? onboard = prefs.getInt('onboarding');
+  print('onboard : $onboard');
+  if (onboard != null && onboard == 1) {
+    return onboarding = 1;
+  }
+  prefs.setInt(('onboarding'), 1);
+}
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
