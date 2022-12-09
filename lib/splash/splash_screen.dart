@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:splash/splash/onboarding_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:splash/splash/welcome_screen.dart';
 
 int onboarding = 0;
 
 Future initOnboarding() async {
   final prefs = await SharedPreferences.getInstance();
 
-  int? onboard = prefs.getInt('onboarding');
-  print('onboard : $onboard');
-  if (onboard != null && onboard == 1) {
-    return onboarding = 1;
-  }
-  prefs.setInt(('onboarding'), 1);
+  onboarding = prefs.getInt('initScreen')!;
 }
 
 class SplashScreen extends StatefulWidget {
@@ -28,6 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     startAnimation();
+    initOnboarding();
   }
 
   Future startAnimation() async {
@@ -41,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => OnboardingPage(),
+        builder: (context) => onboarding == 0 || onboarding == null ? OnboardingPage() : WelcomeScreen(),
       ),
     );
   }

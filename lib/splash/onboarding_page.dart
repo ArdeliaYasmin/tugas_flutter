@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splash/splash/welcome_screen.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -10,6 +11,12 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+
+  void updateOnboarding() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt("initScreen", 1);
+  }
+
   @override
   Widget build(BuildContext context) {
     const bodyStyle = TextStyle(fontSize: 16.0);
@@ -54,6 +61,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 context,
                 MaterialPageRoute(
                   builder: (builer) {
+                    updateOnboarding();
                     return WelcomeScreen();
                   },
                 ),
